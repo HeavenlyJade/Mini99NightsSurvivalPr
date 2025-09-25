@@ -33,9 +33,11 @@ local ServerScheduler = require(MainStorage.code.server.serverEvent.ServerSchedu
 ---@type BattleDataManager
 local BattleDataManager = require(MainStorage.code.server.serverManager.BattleDataManager)
 
+local VariableSystem = require(MainStorage.code.common.Systems.VariableSystem) ---@type VariableSystem
+
 
 ------------------------------------------------------------------------------------
----@class Player : Class
+---@class Player : Entity
 local _M = ClassMgr.Class('Player', Entity)
 
 -- 初始化实例类
@@ -46,6 +48,8 @@ function _M:OnInit(info)
     self.player_net_stat = common_const.PLAYER_NET_STAT.INIT
     -- 昵称
     self.name = info.nickname
+        
+    self.variableSystem = VariableSystem.New("玩家", info.variables or {}) ---@type VariableSystem
     -- 被销毁
     self.isDestroyed = false
     -- 附近的Npc

@@ -67,7 +67,7 @@ local gg = {
 ---@return Player|nil 玩家实例
 function gg.getPlayerByUin(uin_)
     if gg.server_players_list[uin_] then
-        return gg.server_players_list[uin_];
+        return gg.server_players_list[uin_] 
     end
     return nil
 end

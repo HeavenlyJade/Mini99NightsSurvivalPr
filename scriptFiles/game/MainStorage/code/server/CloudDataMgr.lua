@@ -75,7 +75,9 @@ function CloudDataMgr.SavePlayerData(uin_, promptly)
             -- 最高存活天数
             maxSurvivalDays = player_.maxSurvivalDays,
             -- 职业列表
-            jobData = player_.jobData
+            jobData = player_.jobData,
+            -- 玩家变量（VariableSystem）
+            variables = (player_.variableSystem and player_.variableSystem:GetVariablesDictionary()) or {}
         }
         cloudService:SetTableAsync('playerData_' .. uin_, data_, function(ret_)
         end)

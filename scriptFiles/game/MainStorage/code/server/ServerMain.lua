@@ -158,7 +158,9 @@ function ServerMain.player_enter_game(player)
         -- 最高存活天数
         maxSurvivalDays = cloud_player_data_.maxSurvivalDays,
         -- 职业列表
-        jobData = cloud_player_data_.jobData
+        jobData = cloud_player_data_.jobData,
+        -- 玩家变量
+        variables = cloud_player_data_.variables
     })
     -- 加入玩家信息
     gg.server_players_list[uin_] = player_

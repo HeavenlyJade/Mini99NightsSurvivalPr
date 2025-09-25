@@ -45,14 +45,14 @@ end
 --玩家获得一个物品
 function BagMgr.tryGetItem(uin, item_info)
     -- 玩家信息
-    local player_data = BagMgr.getPlayerBagData(uin)
+    local player_data = BagMgr.getPlayerBagData(uin)  ---@type Player|nil
     if not player_data then
         return -1
     end
     local canHand = item_info.itemType.canHand
     -- 不可手持物品
     if not canHand then
-        local equipData = player_data.battle_data.bagInfo[player_data.curUseEquipIdx]
+        local equipData = player_data.battle_data.bagInfo[player_data.curUseEquipIdx] ---@type Item|nil
         if not equipData then
             return -1
         end
@@ -64,7 +64,7 @@ function BagMgr.tryGetItem(uin, item_info)
         if Capacity > 0 then
             local smallBagInfo = player_data.battle_data.smallBagInfo
             for i = 1, Capacity do
-                local bagInfo = smallBagInfo[i]
+                local bagInfo = smallBagInfo[i] ---@type Item|nil
                 if table.is_empty(bagInfo) then
                     BagMgr.returnBagInfoByVer(uin, bagInfo)
                     bagInfo = item_info
